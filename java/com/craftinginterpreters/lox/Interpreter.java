@@ -102,6 +102,16 @@ class Interpreter implements Expr.Visitor<Object>,
       this.environment = previous;
     }
   }
+
+  @Override
+  public Void visitAssertStmt(Stmt.Assert stmt) {
+    var value = evaluate(stmt.expr);
+    if ((value instanceof Boolean) && (Boolean)value) {}
+    else {
+      throw new RuntimeError(new Token(TokenType.ASSERT, "assert", null, 0), "assertion failed");
+    }
+    return null;
+  }
 //< Statements and State execute-block
 //> Statements and State visit-block
   @Override

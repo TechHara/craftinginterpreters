@@ -64,6 +64,11 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     endScope();
     return null;
   }
+  @Override
+  public Void visitAssertStmt(Stmt.Assert stmt) {
+    resolve(stmt.expr);
+    return null;
+  }
 //< visit-block-stmt
 //> Classes resolver-visit-class
   @Override

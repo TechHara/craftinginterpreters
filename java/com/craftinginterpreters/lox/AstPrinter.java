@@ -21,6 +21,15 @@ class AstPrinter implements Expr.Visitor<String>, Stmt.Visitor<String> {
   }
 //< Statements and State omit
 //> visit-methods
+
+  @Override
+  public String visitAssertStmt(Stmt.Assert stmt) {
+    StringBuilder builder = new StringBuilder();
+    builder.append("(assert ");
+    builder.append(stmt.expr.accept(this));
+    builder.append(")");
+    return builder.toString();
+  }
 //> Statements and State omit
   @Override
   public String visitBlockStmt(Stmt.Block stmt) {

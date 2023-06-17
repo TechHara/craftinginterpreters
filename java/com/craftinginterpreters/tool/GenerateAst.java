@@ -50,6 +50,7 @@ public class GenerateAst {
 //> Statements and State stmt-ast
 
     defineAst(outputDir, "Stmt", Arrays.asList(
+      "Assert     : Expr expr",
 //> block-ast
       "Block      : List<Stmt> statements",
 //< block-ast

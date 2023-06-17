@@ -121,6 +121,7 @@ class Parser {
 //> parse-block
     if (match(LEFT_BRACE)) return new Stmt.Block(block());
 //< parse-block
+    if (match(ASSERT)) return assertStatement();
 
     return expressionStatement();
   }
@@ -240,6 +241,10 @@ class Parser {
     Stmt body = statement();
 
     return new Stmt.While(condition, body);
+  }
+  private Stmt assertStatement() {
+    Expr expr = expression();
+    return new Stmt.Assert(expr);
   }
 //< Control Flow while-statement
 //> Statements and State parse-expression-statement
