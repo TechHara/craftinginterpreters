@@ -244,6 +244,7 @@ class Parser {
   }
   private Stmt assertStatement() {
     Expr expr = expression();
+    consume(SEMICOLON, "Expect ';' after expression.");
     return new Stmt.Assert(expr);
   }
 //< Control Flow while-statement
